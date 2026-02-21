@@ -1,0 +1,2 @@
+# FleetFlow
+FleetFlow is a lightweight, web-based fleet and logistics management platform designed to replace manual logbooks with a centralized digital solution. It enables organizations to efficiently manage vehicles, drivers, trips, maintenance, and operational expenses in real time.  The system provides complete visibility into fleet operations — from vehicle allocation and driver compliance to trip lifecycle tracking and cost analysis — helping teams improve utilization, reduce manual errors, and make data-driven decisions.
