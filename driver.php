@@ -55,7 +55,7 @@ $result = mysqli_query($conn, $query);
 <section class="filters">
     <a href="driver.php?status=all"><button class="filter-btn <?=(!isset($_GET['status']) || $_GET['status']=='all')?'active':''?>">All Drivers</button></a>
     <a href="driver.php?status=Active"><button class="filter-btn <?=isset($_GET['status']) && $_GET['status']=='Active'?'active':''?>">Active Drivers</button></a>
-    <a href="driver.php?status=Free"><button class="filter-btn <?=isset($_GET['status']) && $_GET['status']=='Free'?'active':''?>">Free Drivers</button></a>
+    <a href="driver.php?status=Free"><button class="filter-btn <?=isset($_GET['status']) && $_GET['status']=='inactive'?'inactive':''?>">Free Drivers</button></a>
     <a href="driver.php?status=Leave"><button class="filter-btn <?=isset($_GET['status']) && $_GET['status']=='Leave'?'active':''?>">Leave Drivers</button></a>
     <a href="driver.php?status=Notice"><button class="filter-btn <?=isset($_GET['status']) && $_GET['status']=='Notice'?'active':''?>">Notice Drivers</button></a>
 </section>
