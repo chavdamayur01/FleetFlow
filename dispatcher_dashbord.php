@@ -19,7 +19,7 @@ ORDER BY t.trip_id DESC
 $trips_result = mysqli_query($conn, $trips_sql);
 
 // Dashboard counts
-$active_trips = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as cnt FROM trips WHERE status='active'"))['cnt'];
+$active_trips = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as cnt FROM trips WHERE status='future'"))['cnt'];
 $free_vehicles = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as cnt FROM vehicles WHERE status='active'"))['cnt'];
 $free_drivers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as cnt FROM drivers WHERE status='active'"))['cnt'];
 $pending_trips = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as cnt FROM trips WHERE status='future'"))['cnt'];

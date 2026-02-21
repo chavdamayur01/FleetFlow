@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['trip_id'])){
 }
 
 // Fetch active trips
-$trips_result = mysqli_query($conn, "SELECT * FROM trips WHERE status='active' ORDER BY trip_id DESC");
+$trips_result = mysqli_query($conn, "SELECT * FROM trips WHERE status='future' ORDER BY trip_id DESC");
 ?>
 
 <!DOCTYPE html>

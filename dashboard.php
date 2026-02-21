@@ -3,8 +3,8 @@ session_start();
 include("db/db.php"); // connect to database
 
 // Role check
-if(!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Admin'){
-    header("Location: login.php");
+if(!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'admin'){
+    header("Location: dashboard.php");
     exit();
 }
 
@@ -23,7 +23,7 @@ $fuelExpenseRow = mysqli_fetch_assoc(mysqli_query($conn, "
 $totalFuel = $fuelExpenseRow['total_fuel'] ?? 0;
 
 // Active trips count
-$activeTrips = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM trips WHERE status='active'"))['total'];
+$activeTrips = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM trips WHERE status='future'"))['total'];
 
 // Fetch active trips list
 $activeTripsResult = mysqli_query($conn, "

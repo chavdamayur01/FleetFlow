@@ -3,7 +3,7 @@ session_start();
 include("db/db.php");
 
 // Role check
-if(!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Admin'){
+if(!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'admin'){
     header("Location: login.php");
     exit();
 }

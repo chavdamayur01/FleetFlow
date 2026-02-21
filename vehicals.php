@@ -3,15 +3,17 @@ session_start();
 include("db/db.php"); // Database connection
 
 // Role check
-if(!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Admin'){
+if(!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'admin'){
     header("Location: login.php");
     exit();
 }
 
-// Fetch all vehicles
+// Fetch vehicles with total trips
 $vehiclesResult = mysqli_query($conn, "
-    SELECT * FROM vehicles 
-    ORDER BY vehicle_model ASC
+    SELECT v.id, v.number_plate, v.vehicle_model, v.insurance_expiry, v.status,
+           (SELECT COUNT(*) FROM trips t WHERE t.vehicle_id=v.id) as total_trips
+    FROM vehicles v
+    ORDER BY v.vehicle_model ASC
 ");
 ?>
 
@@ -23,40 +25,17 @@ $vehiclesResult = mysqli_query($conn, "
 <title>Vehicle Management</title>
 <link rel="stylesheet" href="assets/vehicle.css">
 <style>
-/* Popup Styles */
-.popup{
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
-}
-.popup-content{
-    background:#fff;
-    padding:20px;
-    border-radius:8px;
-    width:400px;
-    max-width:90%;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-.popup-content h3{
-    margin-top:0;
-    text-align:center;
-}
-.popup-content .vehicle-detail{
-    margin:10px 0;
-    line-height:1.5;
-}
-.popup-content .close{
-    position:absolute;
-    top:10px; right:15px;
-    font-size:20px;
-    cursor:pointer;
-    color:#333;
-}
+/* Popup styling */
+.popup {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;}
+.popup-content {background:#fff; padding:20px; border-radius:10px; width:600px; max-width:95%;}
+.close {float:right; cursor:pointer; font-size:20px; font-weight:bold;}
+.trip-detail {margin-bottom:10px;}
+.actions {margin-bottom:10px;}
+.actions button {margin-right:10px;}
+.status.active {color:green;font-weight:bold;}
+.status.on_trip {color:orange;font-weight:bold;}
+.status.maintenance {color:red;font-weight:bold;}
+.status.inactive {color:gray;font-weight:bold;}
 </style>
 </head>
 <body>
@@ -94,7 +73,7 @@ $vehiclesResult = mysqli_query($conn, "
                 <?php while($v = mysqli_fetch_assoc($vehiclesResult)):
                     $statusClass = strtolower(str_replace(' ','_',$v['status']));
                 ?>
-                <tr data-status="<?php echo $statusClass; ?>">
+                <tr>
                     <td><?php echo $v['vehicle_model']; ?></td>
                     <td><?php echo $v['number_plate']; ?></td>
                     <td><?php echo $v['insurance_expiry']; ?></td>
