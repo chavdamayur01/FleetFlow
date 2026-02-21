@@ -1,0 +1,149 @@
+/* trip.css */
+
+/* General Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f8fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.top-header {
+    background: #4CAF50;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-header .logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.top-header .user-info span {
+    font-weight: 500;
+}
+
+.top-header a.logout-btn {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Page Title */
+.page-title {
+    padding: 20px 30px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.page-title h2 {
+    margin: 0;
+    color: #333;
+}
+
+/* Action Buttons */
+.action-buttons,
+.filters {
+    padding: 0 30px 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-buttons .btn,
+.filters .filter-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn.primary {
+    background: #4CAF50;
+    color: #fff;
+}
+.btn.primary:hover {
+    background: #45a049;
+}
+
+.btn.danger {
+    background: #f44336;
+    color: #fff;
+}
+.btn.warning {
+    background: #FF9800;
+    color: #fff;
+}
+
+.filter-btn {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #4CAF50;
+    color: #fff;
+}
+
+/* Table Section */
+.table-section {
+    padding: 0 30px 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background: #4CAF50;
+    color: #fff;
+}
+
+table tr:hover {
+    background: #f1f1f1;
+}
+
+/* View Button */
+.view-btn {
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #1976D2;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .action-buttons,
+    .filters {
+        flex-direction: column;
+    }
+}
